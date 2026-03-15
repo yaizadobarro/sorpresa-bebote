@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Para el mejor novio ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(45deg,#ff758f,#ffb3c6);
+text-align:center;
+overflow-x:hidden;
+}
+
+h1{
+margin-top:40px;
+color:white;
+}
+
+.foto{
+width:200px;
+border-radius:15px;
+margin:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+#contador{
+color:white;
+font-size:20px;
+margin-top:10px;
+}
+
+button{
+padding:15px 25px;
+font-size:18px;
+border:none;
+border-radius:10px;
+margin:10px;
+cursor:pointer;
+background:white;
+}
+
+#mensaje{
+color:white;
+font-size:22px;
+padding:20px;
+}
+
+#pelota{
+position:absolute;
+font-size:40px;
+cursor:pointer;
+display:none;
+}
+
+#coche{
+position:fixed;
+bottom:40px;
+left:-200px;
+font-size:60px;
+display:none;
+animation:correr 3s linear forwards;
+}
+
+@keyframes correr{
+0%{left:-200px;}
+100%{left:110%;}
+}
+
+.corazon{
+position:absolute;
+color:white;
+animation:flotar 6s linear infinite;
+}
+
+@keyframes flotar{
+0%{transform:translateY(100vh)}
+100%{transform:translateY(-10vh)}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>⚠️ NO PULSES ESTE BOTÓN ⚠️</h1>
+
+<div id="contador"></div>
+
+<img src="foto1.jpg" class="foto">
+<img src="foto2.jpg" class="foto">
+<img src="foto3.jpg" class="foto">
+
+<br>
+
+<button id="botonHuye">🏎 NO ME PULSES</button>
+
+<button onclick="iniciarJuego()">🎮 Minijuego</button>
+
+<button onclick="besar()">😏 Continuar</button>
+
+<div id="mensaje"></div>
+
+<div id="pelota">⚽7</div>
+
+<div id="coche">🏎</div>
+
+<script>
+
+let boton=document.getElementById("botonHuye")
+
+boton.addEventListener("mouseover",function(){
+
+let x=Math.random()*300-150
+let y=Math.random()*200-100
+
+boton.style.transform="translate("+x+"px,"+y+"px)"
+
+})
+
+function contador(){
+
+let inicio=new Date("2025-10-07")
+
+let ahora=new Date()
+
+let diff=ahora-inicio
+
+let dias=Math.floor(diff/(1000*60*60*24))
+let horas=Math.floor((diff/(1000*60*60))%24)
+
+document.getElementById("contador").innerHTML=
+"❤️ Llevamos juntos "+dias+" días y "+horas+" horas"
+
+}
+
+setInterval(contador,1000)
+
+function corazones(){
+
+let c=document.createElement("div")
+
+c.className="corazon"
+
+c.innerHTML="❤️"
+
+c.style.left=Math.random()*100+"vw"
+
+document.body.appendChild(c)
+
+setTimeout(()=>c.remove(),6000)
+
+}
+
+setInterval(corazones,300)
+
+let pelota=document.getElementById("pelota")
+
+function iniciarJuego(){
+
+document.getElementById("mensaje").innerHTML=
+"🎮 Atrapa el balón con el 7 ⚽"
+
+pelota.style.display="block"
+
+moverPelota()
+
+}
+
+function moverPelota(){
+
+let x=Math.random()*window.innerWidth
+let y=Math.random()*window.innerHeight
+
+pelota.style.left=x+"px"
+pelota.style.top=y+"px"
+
+}
+
+pelota.addEventListener("click",function(){
+
+document.getElementById("mensaje").innerHTML=
+"⚽ Golazo!!!<br><br>"+
+"Fan del Dépor 💙<br>"+
+"amante del fútbol, coches, pádel y natación.<br><br>"+
+"❤️ Soy la novia más orgullosa del mundo.<br>"+
+"Te quiero muchísimo y estoy súper orgullosa de todo lo que te esfuerzas.<br>"+
+"Eres la persona más constante y trabajadora que conozco.<br><br>"+
+"No me imagino a nadie mejor conmigo.<br><br>"+
+"<b>TE AMO UN 8 PEGADO AL SUELO CON CINTA</b><br>"+
+"(sí… con la que te cierras las heridas)."
+
+pelota.style.display="none"
+
+document.getElementById("coche").style.display="block"
+
+})
+
+function besar(){
+
+document.getElementById("mensaje").innerHTML=
+"⚠️ ERROR DEL SISTEMA ⚠️<br><br>"+
+"Para continuar debes:<br>"+
+"1️⃣ Mirar a tu novia<br>"+
+"2️⃣ Sonreír<br>"+
+"3️⃣ Darle un beso enorme 😘"
+
+}
+
+</script>
+
+</body>
+</html>
